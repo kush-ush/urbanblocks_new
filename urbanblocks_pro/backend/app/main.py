@@ -21,8 +21,3 @@ app.mount("/data", StaticFiles(directory="data"), name="data")
 def root():
     return {"message": "🚀 UrbanBlocks Backend Running!"}
 
-@app.post("/api/predict-zoning-vit/")
-def predict_zoning_vit(input_data: dict):
-    model = ZoningViT()
-    zoning_map = model.predict(input_data["grid"], input_data.get("constraints", {}))
-    return {"zoning_map": zoning_map}
